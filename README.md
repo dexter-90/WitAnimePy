@@ -1,10 +1,5 @@
-# WitAnimePy
-Download And Watch Anime With Arabic Sub
-<img
-  src=""
-  alt=""
-  title=""
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
+# 🦉WitAnimePy
+> This Is A Python Tool That Allows You To Interact With Witanime
 
 
 # Watch\Download Anime With Arabic Sub
@@ -17,7 +12,7 @@ Download And Watch Anime With Arabic Sub
 
 - Have Library For Witanime
 
-- Download With Great Quality
+- Download With GoOd Quality
 
 
 ---------------------  
@@ -36,4 +31,11 @@ Download And Watch Anime With Arabic Sub
 - Mention Me If You're Going To Use This Basic Tool (:
 ---------------------
 
-# **By Dexter** | <a class="" href="https://www.instagram.com/ishussain_">**Instagram** ☠</a> 
+## 🪐 Credits:
+* [Dexter](https://github.com/dexter-90) For [manga-ar](https://github.com/dexter-90/manga-ar)
+* <a class="" href="https://www.instagram.com/ishussain_">**Instagram** ☠</a> 
+
+#
+* ملاحظة لست مسؤولا عما تفعله بهذه الأداة وما تقوم بتنزيله منها ولا أسامح من يحمل انمي إباحي أو غير أخلاقية
+
+
