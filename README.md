@@ -32,7 +32,7 @@
 ---------------------
 
 ## 🪐 Credits:
-* [Dexter](https://github.com/dexter-90) For [manga-ar](https://github.com/dexter-90/manga-ar)
+* [Dexter](https://github.com/dexter-90) For [manga-ar](https://github.com/dexter-90/WitAnimePy)
 * <a class="" href="https://www.instagram.com/ishussain_">**Instagram** ☠</a> 
 
 #
