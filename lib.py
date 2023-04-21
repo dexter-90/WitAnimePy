@@ -1,3 +1,12 @@
+"""
+witanime Library
+~~~~~~~~~~~~~~~~~~~~~
+Witanime is an Selenium-less library, written in Python, for interact with witanime.
+
+:copyright: (c) 2023 by Dexter.
+:license: Apache 2.0, see LICENSE for more details.
+"""
+
 import gdown
 import requests
 from bs4 import BeautifulSoup
