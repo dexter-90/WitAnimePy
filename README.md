@@ -12,7 +12,7 @@
 
 - Have Library For Witanime
 
-- Download With GoOd Quality
+- Download With Good Quality
 
 
 ---------------------  
