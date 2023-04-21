@@ -27,7 +27,7 @@
 
 ---------------------
 **Notes :**
-- If there a note or error etc just text me on instagram
+- If There's An Note Or Error Etc.. Just DM Me On instagram
 - Mention Me If You're Going To Use This Basic Tool (:
 ---------------------
 
