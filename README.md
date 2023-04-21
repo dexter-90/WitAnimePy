@@ -32,11 +32,13 @@
 -  Give Star If You Like It 🌟
 ---------------------
 
-## 🪐 Credits:
+---------------------
+**🪐 Credits :***
 * [Dexter](https://github.com/dexter-90) For [WitAnimePy](https://github.com/dexter-90/WitAnimePy)
 * <a class="" href="https://www.instagram.com/ishussain_">**Instagram** ☠</a> 
+---------------------
 
-#
+---------------------
 * ملاحظة لست مسؤولا عما تفعله بهذه الأداة وما تقوم بتنزيله منها ولا أسامح من يحمل انمي إباحي أو غير أخلاقية
 
 
