@@ -27,8 +27,9 @@
 
 ---------------------
 **Notes :**
-- If There's An Note Or Error Etc.. Just DM Me On instagram
-- Mention Me If You're Going To Use This Basic Tool (:
+- If There's An Note Or Error Etc.. Just DM Me On instagram 
+- Mention Me If You're Going To Use This Basic Tool
+-  Give Star If You Like It 🌟
 ---------------------
 
 ## 🪐 Credits:
