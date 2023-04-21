@@ -1,137 +1,177 @@
 from lib import *
 
-logo2 = f"""\033[30m
-                            ⠛⠉⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀
-                            ⠀⠀⠀⠀⢿⣿⣶⣦⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⣉⣩⣭⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇
-                            ⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣷⣶⣦⣤⣤⣄⣀⣀⣀⣀⣀⣀⣀⣠⣤⣤⣤⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃
-                            ⠀⠀⠀⠀⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠋⠀⢀
-                            ⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠉⠀⢀⣠⣾⣿
-                            ⠀⠀⠀⠀⠀⠀⠀⠉⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠋⠁⠀⢀⣰⣶⣿⣿⣿⣿
-                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠋⠁⠀⠀⢀⣴⣾⣿⣿⣿⣿⡿⠟⠋
-                            ⢛⣶⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠙⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠉⠉⠁⠀⠀⠀⠀⢀⣠⣴⣶⣿⣿⣿⡿⠟⢋⣡⣴⣶⡆
-                            ⠈⠛⢿⣿⣷⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣴⣾⣿⣿⣿⣿⡿⠋⣁⣴⣾⣿⣿⣿⣿⣷
-                            ⣆⢳⣦⡈⣙⠻⠿⢷⣶⣦⣤⣤⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣴⣶⣿⣿⣿⣿⣿⡿⠟⠋⠁⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿
-                            ⣿⣷⣿⣷⣄⠀⠀⣶⠀⠈⣉⡉⠛⠛⠿⠿⠷⢶⣶⣶⣶⣶⣶⣶⣾⣿⣿⣿⣿⣿⣿⡿⠿⢛⣋⡁⠀⠀⠀⣷⣸⣿⣿⣿⣿⣿⣿⣿⣿⡏
-                            ⣿⣿⣿⣿⣿⢿⡆⢿⣾⠀⢿⣿⣿⣷⣶⣶⠀⡀⠀⠀⠀⣭⣉⣉⣉⣉⣉⣩⣤⣤⣶⣶⣿⣿⣿⡇⠀⠀⠀⢹⢿⣿⣿⣿⣿⣿⣿⣿⣿⣷
-                            ⣿⣿⣿⣿⣿⣇⢿⡘⣿⡟⠜⣿⣿⣿⣿⣿⡆⣿⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⢸⡟⣿⣿⣿⣿⣿⣿⣿⣿⣿
-                            ⣿⣿⣿⣿⣿⣿⣾⣿⣎⢿⣆⠹⣿⣿⣿⣿⣿⡜⣇⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⢸⡇⣿⣿⣿⣿⣿⣿⣿⣿⠟
-                            ⣿⣿⣿⣿⣿⣿⣿⢿⣿⣧⡙⢦⢻⣿⣿⣿⣿⣿⡽⣆⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⣸⢱⣿⣿⣿⣿⡿⠋⢩⠴⡆
-                            ⣿⣿⣿⣿⣿⣿⣿⣧⠙⠛⠛⠀⠁⢻⣿⣿⣿⣿⣿⣝⢦⣀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⣣⣿⣿⣿⣿⣿⠀⠀⣿⡇⠁
-                            ⣿⣿⡿⢿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠠⢻⣿⣿⣿⣿⣿⣷⣼⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢻⣿⣿⣿⡀⠀⠉⠀⠀
-                            ⣿⣿⣿⣶⣭⣛⠿⣿⣿⣿⣷⡶⢀⣀⠀⢀⣀⡈⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢡⢆⣿⣿⣿⣿⡿⣡⢀⠀
-                            ⣿⣿⣿⢿⣿⣿⣷⣌⢿⣿⣿⣿⣿⣟⣷⡈⠙⠻⠄⠘⣿⣿⡆⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠁⢠⡿⣸⣿⣿⣿⠟⢀⣿⢻⣿
-                            ⣿⣿⣶⣀⣿⣿⣿⣿⢠⣿⣿⣿⣿⣿⣾⣷⣤⠀⠀⣴⣿⣿⣿⣜⢷⣄⠉⠙⠛⠻⠿⠟⠛⠛⠉⠁⠀⠀⣠⠞⣵⣿⣿⣿⠋⢀⣾⣿⠸⣿
-                            ⣿⣿⣿⣿⣿⣿⣿⡿⢸⣿⣿⣿⣿⣿⡻⠿⠟⠀⠀⠈⠛⢿⣿⣿⣷⣿⣶⣄⣀⠀⠀⠀⠀⠀⣀⣠⣴⣾⣵⣾⣿⣿⠟⣵⢠⣿⣿⣿⢰⡌
-                            ⣿⣿⣿⣿⣿⣿⣿⢇⣿⣿⣿⣿⣿⣿⣿⣶⣶⣶⣶⣃⣴⣷⣌⠻⢿⣿⣿⣮⣭⣟⣿⣿⣟⣛⣭⣵⣾⣿⣿⣿⠟⠁⠠⢇⣾⣿⣿⣿⠄⣿
-                            ⣬⡛⠿⠿⠿⣋⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠋⠁⡤⠀⠉⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠁⠔⢂⣠⣾⣿⣿⣿⡿⣰⣿
-                            ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠋⠁⠀⠀⠀⣾⡇⣄⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠛⠉⣀⠔⣠⣴⣿⣿⣿⣿⣿⣿⣳⣿⣿
-                            ⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠛⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⣸⣿⣧⢿⣷⡄⠀⠀⠀⠀⠀⠀⠀⢀⠶⢞⣵⣾⣿⣟⣽⣿⣿⣿⡿⣱⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-
-                                              |- Programmed By : Dexter -|
-                                              |- GitHub : Dexter-90     -| 
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                             |- Instagram : ishussain_ -|
-
-"""
-
-print(logo2)
-print('\033[32m\033[1m Welcome To "WitAnimePy", You Can Search About Anime, Get Info, Download, And More !\n\n\033[0m')
-
-anime = str(input(f"\033[1m=> Enter anime name : "))
-print("\033[32m\033[1m[+] Looking for Anime's ...\033[0m")
-
-search = Witanime(anime).Search()
-index = 0
-name_keys = []
-
 try:
-    for key, value in search.items():
-        print(f"\033[1m[ {str(index)} ] ({value['type']}) {key}")
-        index += 1
-        name_keys.append(key)
+    logo2 = f"""⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 
-except AttributeError:
-    raise ValueError(f'\033[1mError With Found Anime Named "{anime}" !')
+                                    |-\033[1m Programmed By :\033[31;1m  Dexter \033[0m-|
+                                    |\033[1m- GitHub : \033[31;1m Dexter-90     \033[0m-| 
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                 |\033[1m- Instagram : \033[31;1m ishussain_ \033[0m-|
 
-choice = int(input('\n\033[1m=> Choose anime : '))
+    """
 
-try:
-    name = name_keys[choice]
-    url = search[name]["url"]
-    info = Witanime.Info(url)
-except IndexError:
-    raise ValueError(f'\033[1mError With Found Anime Named "{anime}" With ID "{choice}" !')
+    print(logo2)
+    print('\033[32m\033[1m Welcome To \033[31m\033[1m"WitAnimePy"\033[32m, You Can Download Anime, Get Anime Info, Search For Anime And More !\n\033[0m')
 
-print(f"\033[33m\033[1mSo You Choose \"{name}\" Anime That Have {len(info['episodes'])} Episodes !")
+    anime = str(input(f"\033[1m=> Enter anime name : "))
+    print("\033[32m\033[1m[+] Looking for Anime's ...\033[0m\n")
 
-choice = int(input("""\n\033[34m\033[1m- [1] Download Episodes    [2] Anime Info
-- [3] Episodes URL         \033[31m[4] Exit\033[0m\n
-\033[1m=> Choose Mode : \033[0m"""))
-
-if choice == 1:
-    episodes = str(input('\033[1m=>\033[0m Enter episode (example: 1-10): \033[1m ')).split("-")
-    start = episodes[0]
-    end = episodes[1]
-    episodes = info["episodes"].values()[start:end]
-
-    if end < start or end > info["episodes-count"]:
-        raise ValueError(f"Error With Find Episodes ({episodes})!")
-
-    print(f"\033[33m\033[1m So You Want To Download From Episode {start} To {end} Episodes From {name} Anime !")
-    Witanime.Download(episodes)
-
-elif choice == 2:
-    print("\033[32m\033[1m [+] General Info:\033[33m\033[1m\n")
-
-    for key, value in info.items():
-        print(f"- {key} - {value}")
-
-elif choice == 3:
-    see = str(input('\033[1m=> Enter episode (example: 1-10): \033[1m ')).split("-")
+    search = Witanime(anime).Search()
+    index = 0
+    name_keys = []
 
     try:
-        start = int(see[0])
-        end = int(see[1])
+        for key, value in search.items():
+            print(f"\033[0m[ {str(index)} ] \033[33m({value['type']})\033[0m\033[1m {key}")
+            index += 1
+            name_keys.append(key)
+
+    except AttributeError:
+        raise ValueError(f'\033[0mError With Found Anime Named "{anime}" !')
+
+    choice = int(input('\n\033[0m\033[1m=> Choose anime : '))
+
+    try:
+        name = name_keys[choice]
+        a = search[name]
+        Type = a["type"]
+        info = Witanime.Info(a["url"])
+        ec = info["episodes-count"]
 
     except IndexError:
-        raise ValueError("Error With Indexing Your Episodes")
+        raise ValueError(f'\033[1mError With Found Anime Named "{anime}" With ID "{choice}" !')
 
-    if end < start or end > len(info["episodes"]):
-        raise ValueError(f"Error With Find Episodes ({see})!")
+    print(f"\033[32m\033[1mSo You Choose \"{name}\" {Type} That Have {ec} Episodes !")
 
-    a = info["episodes"]
+    if Type == "Movie":
+        choice = int(input("""\n\033[34m\033[1m- [1] Download Movie    [2] Movie Info
+        - [3] Movie Server URL         \033[31m[4] Exit\033[0m\n
+        \033[1m=> Choose Mode : \033[0m"""))
+    else:
+        choice = int(input("""\n\033[34m\033[1m- [1] Download Episodes    [2] Anime Info
+- [3] Episodes Server URL  \033[31m[4] Exit\033[0m\n
+\033[1m=> Choose mode : \033[0m"""))
 
-    episodes = [a[f"الحلقة {i}"]for i in range(start, end + 1)]
+    if choice == 1:
+        if type == "Movie":
+            if ec > 1:
+                episodes = str(input(f'\033[1m=>\033[0m Enter movie episodes (example: 1-{ec}): \033[1m ')).split("-")
+            else:
+                episodes = "1"
+        else:
+            episodes = str(input(f'\033[0m\033[1m=> Enter episode (example: 1-{ec}): ')).split("-")
 
-    print("\033[32m\033[1m[+] Collecting Anime Download Links ...\033[0m\n")
-
-    links = []
-    a = 0
-    for episode in episodes:
-        try:
-            link = requests.get(Witanime.Episode_Link(episode, 2)["google drive"])
-            server = "google drive"
-            if link.status_code != 200:
-                var = {"hello": "world"}["dexter"]
-        except KeyError:
+        if not episodes == "1":
             try:
-                link = requests.get(Witanime.Episode_Link(episode, 2)["mega"])
-                server = "mega"
-                if link.status_code != 200:
-                    var = {"hello": "world"}["dexter"]
-            except KeyError:
-                try:
-                    link = requests.get(Witanime.Episode_Link(episode, 2)["mediafire"])
-                    server = "mediafire"
-                    if link.status_code != 200:
-                        var = {"hello": "world"}["dexter"]
-                except KeyError:
-                    try:
-                        link = requests.get(Witanime.Episode_Link(episode, 2)["mega4upload"])
-                        server = "mega4upload"
-                        if link.status_code != 200:
-                            var = {"hello": "world"}["dexter"]
-                    except KeyError:
-                        raise Exception("Can't Find The Video URL")
-        a += 1
+                start = int(episodes[0])
+                end = int(episodes[1])
+            except IndexError:
+                raise ValueError("Error With Indexing Your Episodes")
 
-        print(f"\033[32m\033[ {'Episodes ' + str(a)}- {server.title()} - {link.url} ")
+            if end < start or end > len(info["episodes"]):
+                raise ValueError(f"Error With Find Episodes ({episodes})!")
+
+            a = info["episodes"]
+            try:
+                episodes = [a[f"الحلقة {i}"]for i in range(start, end + 1)]
+            except KeyError:
+                print("Error")
+
+
+            print(f"\033[33m\033[1mSo You Want To Download From Episode {start} To {end} Episodes From {name} Anime !")
+            s = start
+        else:
+            s = episodes
+            print(f"\033[33m\033[1mSo You Want To Download {name} Anime Movie !")
+
+        link = ""
+        for episode in episodes:
+            try:
+                link = Witanime.Episode_Link(episode, 2)["google drive"]
+                server = "google drive"
+            except KeyError or KeyError:
+                try:
+                    link = Witanime.Episode_Link(episode, 2)["mega"]
+                    server = "mega"
+                except KeyError or KeyError:
+                    try:
+                        link = Witanime.Episode_Link(episode, 2)["mediafire"]
+                        server = "mediafire"
+                    except KeyError or KeyError:
+                        try:
+                            link = Witanime.Episode_Link(episode, 2)["file upload"]
+                            server = "file upload"
+                        except KeyError or KeyError:
+                            print(f"Can't Find The Video URL For {s}")
+
+            if episodes == "1":
+
+                Witanime.Download(link, f"@{name}{s}.mp4")
+
+            else:
+                Witanime.Download(link, f"@{name}{s}.mp4")
+                s += 1
+
+
+    elif choice == 2:
+        print("\033[32m\033[1m [+] General Info:\033[33m\033[1m\n")
+
+        for key, value in info.items():
+            print(f"- {key} - {value}")
+
+    elif choice == 3:
+        if type == "Movie":
+            if ec > 1:
+                episodes = str(input(f'\033[0m\033[1m=> Enter movie episodes (example: 1-{ec}): ')).split("-")
+            else:
+                episodes = "1"
+        else:
+            episodes = str(input(f'V\033[1m=> Enter episode (example: 1-{ec}): ')).split("-")
+
+        if not episodes == "1":
+            try:
+                start = int(episodes[0])
+                end = int(episodes[1])
+            except IndexError:
+                raise ValueError("Error With Indexing Your Episodes")
+
+            if end < start or end > len(info["episodes"]):
+                raise ValueError(f"Error With Find Episodes ({episodes})!")
+
+            a = info["episodes"]
+            try:
+                episodes = [a[f"الحلقة {i}"] for i in range(start, end + 1)]
+            except KeyError:
+                print("Error")
+
+            print("\033[32m\033[1m[+] Collecting Anime Download Links ...\033[0m\n")
+            s = start
+        else:
+            s = episodes
+            print("\033[32m\033[1m[+] Collecting Anime Download Links ...\033[0m\n")
+
+        link = ""
+        server = ""
+        index = 1
+        for episode in episodes:
+            try:
+                link = Witanime.Episode_Link(episode, 2)["google drive"]
+                server = "google drive"
+            except KeyError or KeyError:
+                try:
+                    link = Witanime.Episode_Link(episode, 2)["mega"]
+                    server = "mega"
+                except KeyError or KeyError:
+                    try:
+                        link = Witanime.Episode_Link(episode, 2)["mediafire"]
+                        server = "mediafire"
+                    except KeyError or KeyError:
+                        try:
+                            link = Witanime.Episode_Link(episode, 2)["file upload"]
+                            server = "file upload"
+                        except KeyError or KeyError:
+                            print(f"Can't Find The Video URL For {s}")
+            title = f"Episode {index}"
+            print(f"\033[32m[ {title} - {server.title()} - {link} ")
+            index += 1
+except KeyboardInterrupt:
+    exit("bye")
