@@ -10,7 +10,8 @@ class Witanime:
         self.name = name
 
     def Search(self):
-
+        """Search For Anime By Name"""
+        
         soup = BeautifulSoup(
             requests.get(f"https://witanime.com/?search_param=animes&s={self.name.replace(' ', '+')}").content,
             "html.parser")
@@ -27,6 +28,7 @@ class Witanime:
 
     @staticmethod
     def Episodes(url):
+        """Get Anime Episodes URL By URL"""
         cards = BeautifulSoup(requests.get(str(url)).content, "html.parser").find_all("div",
                                                                                       class_="episodes-card-title")
         result = {}
@@ -36,6 +38,8 @@ class Witanime:
 
     @staticmethod
     def Episode_Link(episode: str, Type=1):
+        """Get Episode Server URL By Episode URL"""
+        
         if Type == 1:
             response = requests.get(episode).content
             soup = BeautifulSoup(response, 'html.parser')
@@ -50,7 +54,8 @@ class Witanime:
 
     @staticmethod
     def Info(url):
-
+        """Get Anime INFO By URL """
+        
         soup = BeautifulSoup(requests.get(url).content, 'html.parser')
 
         anime_info = soup.find_all("div", class_="anime-info")
@@ -82,6 +87,8 @@ class Witanime:
 
     @staticmethod
     def Download(url, fn):
+        """Download Anime Episode By Server URL"""
+        
         global response
         if "mega" in url:
             mega_key = url.split("#")[1]
