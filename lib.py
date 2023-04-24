@@ -87,7 +87,7 @@ class Witanime:
         except TypeError:
             teaser = None
 
-        is_movie = True if "Movie" in anime_type else False
+        is_movie = "Movie" in anime_type
 
         return {"title": title, "story": story, "genres": genres, "type": anime_type, "status": status, "cover": cover,
                 "episode-duration": episode_duration, "premiered": premiered, "episodes": episodes,
