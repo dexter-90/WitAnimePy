@@ -1,4 +1,4 @@
-from lib import *
+from Witanime import *
 
 try:
     logo2 = f"""⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -10,7 +10,8 @@ try:
     """
 
     print(logo2)
-    print('\033[32m\033[1m Welcome To \033[31m\033[1m"WitAnimePy"\033[32m, You Can Download Anime, Get Anime Info, Search For Anime And More !\n\033[0m')
+    print('\033[32m\033[1m Welcome To \033[31m\033[1m"WitAnimePy"\033[32m, You Can Download Anime, Get Anime Info, '
+          'Search For Anime And More !\n\033[0m')
 
     anime = str(input(f"\033[1m=> Enter anime name : "))
     print("\033[32m\033[1m[+] Looking for Anime's ...\033[0m\n")
@@ -44,8 +45,8 @@ try:
 
     if Type == "Movie":
         choice = int(input("""\n\033[34m\033[1m- [1] Download Movie    [2] Movie Info
-        - [3] Movie Server URL         \033[31m[4] Exit\033[0m\n
-        \033[1m=> Choose Mode : \033[0m"""))
+- [3] Movie Server URL     \033[31m[4] Exit\033[0m\n
+\033[1m=> Choose Mode : \033[0m"""))
     else:
         choice = int(input("""\n\033[34m\033[1m- [1] Download Episodes    [2] Anime Info
 - [3] Episodes Server URL  \033[31m[4] Exit\033[0m\n
@@ -151,7 +152,6 @@ try:
 
         link = ""
         server = ""
-        index = 1
         for episode in episodes:
             try:
                 link = Witanime.Episode_Link(episode, 2)["google drive"]
@@ -170,8 +170,8 @@ try:
                             server = "file upload"
                         except KeyError or KeyError:
                             print(f"Can't Find The Video URL For {s}")
-            title = f"Episode {index}"
-            print(f"\033[32m[ {title} - {server.title()} - {link} ")
-            index += 1
+            title = f"Episode {s}"
+            print(f"\033[32m{title} - {server.title()} - {link} ")
+            s += 1
 except KeyboardInterrupt:
     exit("bye")
